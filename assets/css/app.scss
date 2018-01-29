@@ -3,13 +3,23 @@
 @import "bootstrap";
 
 .side { padding: 4ex; text-align: center; }
+body{
+    background-color: rgba(255, 255, 255, 0.767);
+}
 h1 { text-align: center; }
 
 	/* flip the pane when hovered */
 	/*.flip-container:hover .flipper, .flip-container.hover .flipper {
 		transform: rotateY(180deg);
     }*/
-    
+    .buttonDiv{
+        float: right;
+        margin-right: 15%;
+    }
+    .scoreDiv{
+        float: left;
+        margin-left: 8%;
+    }
     .flip-container .flipper, {
 		transform: rotateY(180deg);
     }
@@ -18,11 +28,10 @@ h1 { text-align: center; }
     }
 
 .flip-container, .front, .back, .matched {
-	width: 120px;
-    height: 120px;
+	width: 150px;
+    height: 150px;
     float: left;
-    margin : 4%;
-    margin-bottom: 5%;
+    margin : 2%;
 }
 .flipper {
 	transition: 0.6s;
@@ -43,23 +52,23 @@ h1 { text-align: center; }
 
 .front {
     z-index: 2;
-    background-color: aqua;
+    background-color:#db8591;
 	transform: rotateY(0deg);
 }
 
 .back {
-    background-color: pink;
+    background-color: lightblue;
     transform: rotateY(180deg);
 }
 .character{
-    font-size: 70px; 
+    font-size: 90px; 
     text-align: center;
     font-style: bold;
     vertical-align: middle;
 }
 
 .matched{
-    font-size: 70px; 
+    font-size: 90px; 
     text-align: center;
     font-style: bold;
     vertical-align: middle;

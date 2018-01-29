@@ -11,32 +11,36 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tiles : [
-        {character : 'A' , matched : false },
-        {character : 'B' , matched : false },
-        {character : 'C' , matched : false },
-        {character : 'D' , matched : false },
-        {character : 'E' , matched : false },
-        {character : 'F' , matched : false },
-        {character : 'G' , matched : false },
-        {character : 'H' , matched : false },
-        {character : 'A' , matched : false },
-        {character : 'B' , matched : false },
-        {character : 'C' , matched : false },
-        {character : 'D' , matched : false },
-        {character : 'E' , matched : false },
-        {character : 'F' , matched : false },
-        {character : 'G' , matched : false },
-        {character : 'H' , matched : false }
-      ],
       flippedCards :[],
       score : 0,
       matchedCount: 0,
-      gameOver:false
+      gameOver:false,
+      gamePaused:false,
+      tiles:_.shuffle([
+        { character: "A", matched: false },
+        { character: "B", matched: false },
+        { character: "C", matched: false },
+        { character: "D", matched: false },
+        { character: "E", matched: false },
+        { character: "F", matched: false },
+        { character: "G", matched: false },
+        { character: "H", matched: false },
+        { character: "A", matched: false },
+        { character: "B", matched: false },
+        { character: "C", matched: false },
+        { character: "D", matched: false },
+        { character: "E", matched: false },
+        { character: "F", matched: false },
+        { character: "G", matched: false },
+        { character: "H", matched: false },
+      ] ) 
     };
   }
-
+  
   onCardClickOuter(cardIndex) {
+    if(this.state.gamePaused){
+      return;
+    }
 		if(this.state.flippedCards.includes(cardIndex) ) {
       return;
 		}
@@ -45,6 +49,9 @@ class Demo extends React.Component {
 			flippedCards: this.state.flippedCards
 		})
 		 if(this.state.flippedCards.length ==2) {
+      this.setState({
+        gamePaused: true
+      })
       this.resetTime = setTimeout(() => {
          this.cardMatchCheck();
       },1000);
@@ -54,28 +61,29 @@ class Demo extends React.Component {
   gameOverFn(){
     this.resetTime = setTimeout(() => {
     this.setState({
-      tiles : [
-        {character : 'A' , matched : false },
-        {character : 'B' , matched : false },
-        {character : 'C' , matched : false },
-        {character : 'D' , matched : false },
-        {character : 'E' , matched : false },
-        {character : 'F' , matched : false },
-        {character : 'G' , matched : false },
-        {character : 'H' , matched : false },
-        {character : 'A' , matched : false },
-        {character : 'B' , matched : false },
-        {character : 'C' , matched : false },
-        {character : 'D' , matched : false },
-        {character : 'E' , matched : false },
-        {character : 'F' , matched : false },
-        {character : 'G' , matched : false },
-        {character : 'H' , matched : false }
-      ],
       flippedCards :[],
       score : 0,
       matchedCount: 0,
-      gameOver:false
+      gameOver:false,
+      gamePaused:false,
+      tiles:_.shuffle([
+        { character: "A", matched: false },
+        { character: "B", matched: false },
+        { character: "C", matched: false },
+        { character: "D", matched: false },
+        { character: "E", matched: false },
+        { character: "F", matched: false },
+        { character: "G", matched: false },
+        { character: "H", matched: false },
+        { character: "A", matched: false },
+        { character: "B", matched: false },
+        { character: "C", matched: false },
+        { character: "D", matched: false },
+        { character: "E", matched: false },
+        { character: "F", matched: false },
+        { character: "G", matched: false },
+        { character: "H", matched: false },
+      ] ) 
     });
    },7500);
   }
@@ -98,7 +106,8 @@ class Demo extends React.Component {
     this.setState({
       tiles: tile_list,
       flippedCards: [],
-      score :this.state.score
+      score :this.state.score,
+      gamePaused:false
     })
     if(this.state.matchedCount==8){
       this.setState({
@@ -111,40 +120,44 @@ class Demo extends React.Component {
       this.state.score=this.state.score-4;
       this.setState({
         flippedCards: [],
-        score :this.state.score
+        score :this.state.score,
+        gamePaused:false
       })
     }
   }
   restartGame(){
     this.resetTime = setTimeout(() => {
       this.setState({
-        tiles : [
-          {character : 'A' , matched : false },
-          {character : 'B' , matched : false },
-          {character : 'C' , matched : false },
-          {character : 'D' , matched : false },
-          {character : 'E' , matched : false },
-          {character : 'F' , matched : false },
-          {character : 'G' , matched : false },
-          {character : 'H' , matched : false },
-          {character : 'A' , matched : false },
-          {character : 'B' , matched : false },
-          {character : 'C' , matched : false },
-          {character : 'D' , matched : false },
-          {character : 'E' , matched : false },
-          {character : 'F' , matched : false },
-          {character : 'G' , matched : false },
-          {character : 'H' , matched : false }
-        ],
         flippedCards :[],
         score : 0,
         matchedCount: 0,
-        gameOver:false
+        gameOver:false,
+        gamePaused:false,
+        tiles:_.shuffle([
+          { character: "A", matched: false },
+          { character: "B", matched: false },
+          { character: "C", matched: false },
+          { character: "D", matched: false },
+          { character: "E", matched: false },
+          { character: "F", matched: false },
+          { character: "G", matched: false },
+          { character: "H", matched: false },
+          { character: "A", matched: false },
+          { character: "B", matched: false },
+          { character: "C", matched: false },
+          { character: "D", matched: false },
+          { character: "E", matched: false },
+          { character: "F", matched: false },
+          { character: "G", matched: false },
+          { character: "H", matched: false },
+        ] )
       });
      },500);
   }
 
+  
   render() {
+
     let item_list = _.map(this.state.tiles, (item, index) => {
       return <Tile card={item} key={index} onCardClick={this.onCardClickOuter.bind(this, index)} isFlipped={this.state.flippedCards.includes(index)} />;
     });
@@ -152,9 +165,12 @@ class Demo extends React.Component {
       return (
         <div className="row">
           <div className="col">
-              <h1 className="text-center">You won!!!</h1>
+              <h1 className="text-center">You won!!! Wait or Restart Immediately</h1>
               <div className="col" >
                 <h2 className="text-center">Total Score : {this.state.score}</h2>
+                <div className="col">
+                <Button onClick={this.restartGame.bind(this)}>Restart</Button>  
+                </div>
               </div>    
         </div>
       </div>
@@ -164,16 +180,22 @@ class Demo extends React.Component {
     return (
       <div className="row">
         <div className="sectionClass">
+        <div className="buttonDiv">
+        <Button onClick={this.restartGame.bind(this)}>Restart</Button>     
+        </div>  
+        <div className="scoreDiv">
+            <h2>Score : {this.state.score}</h2>    
+        </div>  
+      </div>
+        <div className="sectionClass">
             {item_list}
-            <div className="row" >
-              <h2 >Score : {this.state.score}</h2>
-              <Button onClick={this.restartGame.bind(this)}>Restart</Button>
-            </div>    
+                
       </div>
     </div>
     );
   }
-  }
+
+}
 }
 
 function Tile(params){
