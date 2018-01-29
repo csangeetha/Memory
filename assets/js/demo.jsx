@@ -37,19 +37,16 @@ class Demo extends React.Component {
   }
 
   onCardClickOuter(cardIndex) {
-		//  early return in case cards been selected this round or the timer is 'on'
 		if(this.state.flippedCards.includes(cardIndex) ) {
       return;
 		}
 		this.state.flippedCards.push(cardIndex)
-
-    console.log(cardIndex, 'PROPS', this.state.flippedCards);
 		this.setState({
 			flippedCards: this.state.flippedCards
 		})
 		 if(this.state.flippedCards.length ==2) {
       this.resetTime = setTimeout(() => {
-         this.checkMatch();
+         this.cardMatchCheck();
       },1000);
 		 }
 }
@@ -84,13 +81,12 @@ class Demo extends React.Component {
   }
 
 
-  checkMatch(){
+  cardMatchCheck(){
     var cardOne=this.state.flippedCards[0];
     var cardTwo=this.state.flippedCards[1];
     let character_list = _.map(this.state.tiles, (item, index) => {
         return item.character;
     });
-    console.log(character_list);
     if(character_list[cardOne]===character_list[cardTwo]){
       let tile_list = _.map(this.state.tiles, (item, index) => {
         return item;
