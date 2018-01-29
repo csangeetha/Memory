@@ -117,7 +117,7 @@ class Demo extends React.Component {
   }
     }
     else{
-      this.state.score=this.state.score-4;
+      this.state.score=this.state.score-1;
       this.setState({
         flippedCards: [],
         score :this.state.score,
