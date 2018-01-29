@@ -4,3 +4,80 @@
 
 .side { padding: 4ex; text-align: center; }
 h1 { text-align: center; }
+.flip-container {
+      
+}
+	/* flip the pane when hovered */
+	/*.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+    }*/
+    
+    .flip-container .flipper, {
+		transform: rotateY(180deg);
+    }
+    .flip-container .flipped, {
+		transform: rotateY(-180deg);
+    }
+
+.flip-container, .front, .back, .matched {
+	width: 120px;
+    height: 120px;
+    float: left;
+    margin : 4%;
+    margin-bottom: 5%;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back .matched{
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.rowNew{
+    width:30%;
+}
+/* front pane, placed above back */
+.front {
+    z-index: 2;
+    background-color: aqua;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+    background-color: pink;
+    transform: rotateY(180deg);
+    
+}
+.character{
+    font-size: 70px; 
+    text-align: center;
+    font-style: bold;
+    vertical-align: middle;
+}
+
+.matched{
+    font-size: 70px; 
+    text-align: center;
+    font-style: bold;
+    vertical-align: middle;
+    background-color: green;
+    transform: rotateY(180deg);
+}
+.sectionClass {
+    width :70%;
+    height:70%;
+    margin-left:15%;
+    
+}
