@@ -54,7 +54,7 @@ class Demo extends React.Component {
       })
       this.resetTime = setTimeout(() => {
          this.cardMatchCheck();
-      },1000);
+      },1200);
 		 }
 }
 

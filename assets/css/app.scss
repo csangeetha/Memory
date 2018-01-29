@@ -6,19 +6,22 @@
 body{
     background-color: rgba(255, 255, 255, 0.767);
 }
-h1 { text-align: center; }
+h1 { text-align: center; margin-right: 3.5%;}
 
 	/* flip the pane when hovered */
 	/*.flip-container:hover .flipper, .flip-container.hover .flipper {
 		transform: rotateY(180deg);
     }*/
+    .sectionClass{
+        margin-left: 5%;
+    }
     .buttonDiv{
         float: right;
-        margin-right: 15%;
+        margin-right: 20%;
     }
     .scoreDiv{
         float: left;
-        margin-left: 8%;
+        margin-left: 5%;
     }
     .flip-container .flipper, {
 		transform: rotateY(180deg);
@@ -28,8 +31,8 @@ h1 { text-align: center; }
     }
 
 .flip-container, .front, .back, .matched {
-	width: 130px;
-    height: 130px;
+	width: 135px;
+    height: 135px;
     float: left;
     margin : 2%;
     box-shadow:5px 5px 10px grey; 
