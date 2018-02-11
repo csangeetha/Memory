@@ -1,8 +1,16 @@
-<h1>Memory Game</h1>
+<div class="row">
+  <script>
+  function joinGame(){
 
-<div id="game">
-  Loading...
+    var name="demo";
+    name=document.getElementById("name").value;
+    var link= "/game/".concat(name);
+    document.getElementById("joinGameID").href=link;
+  }
+  </script>
+  <div class="col">
+    <h1 id="index-page">Join a Game</h1>
+    <input type="text" id="name"/>
+    <p><a id="joinGameID" href="" onclick="joinGame()">Join</a></p>
+  </div>
 </div>
-
-
-
