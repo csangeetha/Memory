@@ -4,6 +4,7 @@
                              phoenix,phoenix_live_reload]},
               {description,"memory"},
               {modules,['Elixir.Memory','Elixir.Memory.Application',
+                        'Elixir.Memory.Game','Elixir.Memory.GameBackup',
                         'Elixir.MemoryWeb','Elixir.MemoryWeb.Endpoint',
                         'Elixir.MemoryWeb.ErrorHelpers',
                         'Elixir.MemoryWeb.ErrorView',

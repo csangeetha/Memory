@@ -1,4 +1,5 @@
-<h1>Memory Game : <%= @game %></h1>
+<h1 style="margin-left: -10%;margin-bottom: 3%;margin-top:2%">
+<%= @game %>,let's play Memory!! </h1>
 <script>
       window.gameName = "<%= @game %>";
 </script>

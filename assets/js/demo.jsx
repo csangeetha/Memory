@@ -11,14 +11,13 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.channel = props.channel;
-    this.state = {
-      flippedCards :[],
-      score : 0,
-      matchedCount: 0,
-      gameOver:false,
-      gamePaused:false,
-      tiles: []
-    };
+    this.state={
+      flippedCards: [],
+    score: 0,
+    matchedCount: 0,
+    gameOver: false,
+    gamePaused: false,
+    tiles : []};
     this.channel.join()
         .receive("ok", this.gotView.bind(this))
         .receive("error", resp => { console.log("Unable to join", resp) });
@@ -42,19 +41,11 @@ class Demo extends React.Component {
 		}
     this.channel.push("flippedCardsAdd" ,{flippedCard: cardIndex})
         .receive("ok", this.gotView.bind(this));
-		//this.state.flippedCards.push(cardIndex)
-		//this.setState({
-			//flippedCards: this.state.flippedCards
-		//})
 		 if(this.state.flippedCards.length ==1) {
        this.channel.push("gamePausedToggle" ,{toggleVal: true})
            .receive("ok", this.gotView.bind(this));
-    //  this.setState({
-      //  gamePaused: true
-      //})
       this.resetTime = setTimeout(() => {
-        // this.cardMatchCheck();
-        this.channel.push("cardMatch" , {flippedCard : this.state.flippedCards})
+        this.channel.push("cardMatch",{flippedCard : this.state.flippedCards})
             .receive("ok", this.gotView.bind(this));
       },1200);
 		 }
@@ -62,33 +53,41 @@ class Demo extends React.Component {
 
   gameOverFn(){
     this.resetTime = setTimeout(() => {
-      this.channel.push("restart",{restart: true})
+      this.channel.push("restart" , {restart : true})
+          .receive("ok", this.gotView.bind(this));
+      this.channel.push("restart")
           .receive("ok", this.gotView.bind(this));
    },7500);
   }
 
-
   restartGame(){
-      this.resetTime = setTimeout(() => {
-        this.channel.push("restart",{restart: true})
-            .receive("ok", this.gotView.bind(this));
-          },3500);
+    this.resetTime = setTimeout(() => {
+      this.channel.push("restart" , {restart : true})
+          .receive("ok", this.gotView.bind(this));
+      this.channel.push("restart")
+          .receive("ok", this.gotView.bind(this));
+   },2500);
   }
 
   render() {
 
     let item_list = _.map(this.state.tiles, (item, index) => {
-      return <Tile card={item} key={index} onCardClick={this.onCardClickOuter.bind(this, index)} isFlipped={this.state.flippedCards.includes(index)} />;
+      return <Tile card={item} key={index} onCardClick=
+        {this.onCardClickOuter.bind(this, index)}
+        isFlipped={this.state.flippedCards.includes(index)} />;
     });
     if(this.state.gameOver){
       return (
         <div className="row">
           <div className="col">
-              <h1 className="text-center">You won!!! Wait or Restart Immediately</h1>
+              <h1 className="text-center">You won!!! Wait or
+                Restart Immediately</h1>
               <div className="col" >
-                <h2 className="text-center">Total Score : {this.state.score}</h2>
+                <h2 className="text-center">Total Score :
+                  {this.state.score}</h2>
                 <div className="col">
-                <Button onClick={this.restartGame.bind(this)}>Restart</Button>
+                <Button onClick={this.restartGame.bind(this)}>
+                  Restart</Button>
                 </div>
               </div>
         </div>
@@ -113,8 +112,7 @@ class Demo extends React.Component {
     </div>
     );
   }
-
-}
+  }
 }
 
 function Tile(params){

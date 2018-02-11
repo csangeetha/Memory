@@ -6032,11 +6032,10 @@ a.text-dark:hover, a.text-dark:focus {
   text-align: center; }
 
 body {
-  background-color: rgba(255, 255, 255, 0.767); }
+  background-color: aliceblue; }
 
 h1 {
-  text-align: center;
-  margin-right: 3.5%; }
+  text-align: center; }
 
 /* flip the pane when hovered */
 /*.flip-container:hover .flipper, .flip-container.hover .flipper {

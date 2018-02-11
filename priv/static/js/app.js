@@ -41192,7 +41192,8 @@ function init() {
   }
 
   if (document.getElementById('index-page')) {
-    form_init();
+    //form_init();
+    console.log("in index page");
   }
 }
 
@@ -41266,8 +41267,7 @@ var Demo = function (_React$Component) {
       matchedCount: 0,
       gameOver: false,
       gamePaused: false,
-      tiles: []
-    };
+      tiles: [] };
     _this.channel.join().receive("ok", _this.gotView.bind(_this)).receive("error", function (resp) {
       console.log("Unable to join", resp);
     });
@@ -41295,17 +41295,9 @@ var Demo = function (_React$Component) {
         return;
       }
       this.channel.push("flippedCardsAdd", { flippedCard: cardIndex }).receive("ok", this.gotView.bind(this));
-      //this.state.flippedCards.push(cardIndex)
-      //this.setState({
-      //flippedCards: this.state.flippedCards
-      //})
       if (this.state.flippedCards.length == 1) {
         this.channel.push("gamePausedToggle", { toggleVal: true }).receive("ok", this.gotView.bind(this));
-        //  this.setState({
-        //  gamePaused: true
-        //})
         this.resetTime = setTimeout(function () {
-          // this.cardMatchCheck();
           _this2.channel.push("cardMatch", { flippedCard: _this2.state.flippedCards }).receive("ok", _this2.gotView.bind(_this2));
         }, 1200);
       }
@@ -41317,6 +41309,7 @@ var Demo = function (_React$Component) {
 
       this.resetTime = setTimeout(function () {
         _this3.channel.push("restart", { restart: true }).receive("ok", _this3.gotView.bind(_this3));
+        _this3.channel.push("restart").receive("ok", _this3.gotView.bind(_this3));
       }, 7500);
     }
   }, {
@@ -41326,7 +41319,8 @@ var Demo = function (_React$Component) {
 
       this.resetTime = setTimeout(function () {
         _this4.channel.push("restart", { restart: true }).receive("ok", _this4.gotView.bind(_this4));
-      }, 3500);
+        _this4.channel.push("restart").receive("ok", _this4.gotView.bind(_this4));
+      }, 2500);
     }
   }, {
     key: 'render',
@@ -41334,7 +41328,8 @@ var Demo = function (_React$Component) {
       var _this5 = this;
 
       var item_list = _.map(this.state.tiles, function (item, index) {
-        return _react2.default.createElement(Tile, { card: item, key: index, onCardClick: _this5.onCardClickOuter.bind(_this5, index), isFlipped: _this5.state.flippedCards.includes(index) });
+        return _react2.default.createElement(Tile, { card: item, key: index, onCardClick: _this5.onCardClickOuter.bind(_this5, index),
+          isFlipped: _this5.state.flippedCards.includes(index) });
       });
       if (this.state.gameOver) {
         return _react2.default.createElement(
@@ -41354,7 +41349,7 @@ var Demo = function (_React$Component) {
               _react2.default.createElement(
                 'h2',
                 { className: 'text-center' },
-                'Total Score : ',
+                'Total Score :',
                 this.state.score
               ),
               _react2.default.createElement(

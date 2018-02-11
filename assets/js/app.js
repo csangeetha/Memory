@@ -30,7 +30,8 @@ function init() {
    }
 
   if (document.getElementById('index-page')) {
-    form_init();
+    //form_init();
+    console.log("in index page")
   }
 }
 

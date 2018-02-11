@@ -4,9 +4,9 @@
 
 .side { padding: 4ex; text-align: center; }
 body{
-    background-color: rgba(255, 255, 255, 0.767);
+    background-color: aliceblue;
 }
-h1 { text-align: center; margin-right: 3.5%;}
+h1 { text-align: center;}
 
 	/* flip the pane when hovered */
 	/*.flip-container:hover .flipper, .flip-container.hover .flipper {
@@ -35,7 +35,7 @@ h1 { text-align: center; margin-right: 3.5%;}
     height: 132px;
     float: left;
     margin : 2%;
-    box-shadow:5px 5px 10px grey; 
+    box-shadow:5px 5px 10px grey;
 
 }
 .flipper {
@@ -66,14 +66,14 @@ h1 { text-align: center; margin-right: 3.5%;}
     transform: rotateY(180deg);
 }
 .character{
-    font-size: 90px; 
+    font-size: 90px;
     text-align: center;
     font-style: bold;
     vertical-align: middle;
 }
 
 .matched{
-    font-size: 90px; 
+    font-size: 90px;
     text-align: center;
     font-style: bold;
     vertical-align: middle;
@@ -84,5 +84,5 @@ h1 { text-align: center; margin-right: 3.5%;}
     width :70%;
     height:70%;
     margin-left:15%;
-    
+
 }
