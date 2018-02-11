@@ -1,6 +1,6 @@
 defmodule MemoryWeb.GamesChannel do
   use MemoryWeb, :channel
-  alias Memory.Game
+  #alias Memory.Game
   def join("games:lobby", payload, socket) do
     if authorized?(payload) do
       {:ok, socket}
