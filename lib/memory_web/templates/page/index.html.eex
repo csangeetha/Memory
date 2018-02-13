@@ -12,11 +12,10 @@
     <h1 id="index-page" style="text-align:center;margin-top:3%;">Let's play Memory!!</h1>
     <h2 style="text-align:center;margin-top:5%;">Enter game name </h2>
     <p style="text-align:center;height:100px;">
-    <img style="height:150px;" src="/images/arrow3.gif"/ >
-  </p>
+    <img style="height:150px;" alt="down arrow gif" src="/images/arrow3.gif"/> </p>
     <p style="text-align:center;">
     <input type="text" id="name"/></p>
     <p style="text-align:center;margin-top:2%;">
-    <a id="joinGameID" href="" onclick="joinGame()"><button class="button" >Join</button></a></p>
+    <a class="button" id="joinGameID" href="" onclick="joinGame()">Join</a></p>
   </div>
 </div>
